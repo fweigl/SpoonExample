@@ -1,8 +1,12 @@
 package com.example.spoonexample;
 
+import android.app.Activity;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.squareup.spoon.Spoon;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,10 +20,18 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
+    Activity activity;
+    int c = 0;
+
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule =
             new ActivityTestRule<>(MainActivity.class);
 
+
+    @Before
+    public void setup() {
+        activity = mActivityRule.getActivity();
+    }
 
     @Test
     public void button1ShowsText1() {
@@ -27,6 +39,8 @@ public class MainActivityTest {
         onView(withId(R.id.button1)).perform(click());
 
         onView(withId(R.id.tv1)).check(matches(isDisplayed()));
+
+        Spoon.screenshot(activity, getTag());
     }
 
     @Test
@@ -35,6 +49,8 @@ public class MainActivityTest {
         onView(withId(R.id.button2)).perform(click());
 
         onView(withId(R.id.tv2)).check(matches(isDisplayed()));
+
+        Spoon.screenshot(activity, getTag());
     }
 
     @Test
@@ -43,5 +59,12 @@ public class MainActivityTest {
         onView(withId(R.id.button3)).perform(click());
 
         onView(withId(R.id.tv3)).check(matches(isDisplayed()));
+
+        Spoon.screenshot(activity, getTag());
+    }
+
+    private String getTag() {
+        c++;
+        return String.valueOf(c);
     }
 }
