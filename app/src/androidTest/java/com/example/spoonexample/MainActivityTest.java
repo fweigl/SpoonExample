@@ -21,7 +21,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class MainActivityTest {
 
     Activity activity;
-    int c = 0;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule =
@@ -40,7 +39,7 @@ public class MainActivityTest {
 
         onView(withId(R.id.tv1)).check(matches(isDisplayed()));
 
-        Spoon.screenshot(activity, getTag());
+        Spoon.screenshot(activity, "1");
     }
 
     @Test
@@ -50,7 +49,7 @@ public class MainActivityTest {
 
         onView(withId(R.id.tv2)).check(matches(isDisplayed()));
 
-        Spoon.screenshot(activity, getTag());
+        Spoon.screenshot(activity, "2");
     }
 
     @Test
@@ -60,11 +59,6 @@ public class MainActivityTest {
 
         onView(withId(R.id.tv3)).check(matches(isDisplayed()));
 
-        Spoon.screenshot(activity, getTag());
-    }
-
-    private String getTag() {
-        c++;
-        return String.valueOf(c);
+        Spoon.screenshot(activity, "3");
     }
 }
