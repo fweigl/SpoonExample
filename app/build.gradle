@@ -21,9 +21,13 @@ android {
     spoon {
         debug = true
         grantAllPermissions = true
-//        output = "build/spoon-output"
-
+        singleInstrumentationCall = true
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
 }
 
 dependencies {
@@ -34,4 +38,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT'
+    androidTestImplementation 'com.squareup.spoon:spoon-runner:2.0.0-SNAPSHOT'
 }

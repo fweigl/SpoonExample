@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.squareup.spoon.Spoon;
+import com.squareup.spoon.SpoonRule;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -39,7 +39,7 @@ public class MainActivityTest {
 
         onView(withId(R.id.tv1)).check(matches(isDisplayed()));
 
-        Spoon.screenshot(activity, "1");
+        new SpoonRule().screenshot(activity, "");
     }
 
     @Test
@@ -49,7 +49,7 @@ public class MainActivityTest {
 
         onView(withId(R.id.tv2)).check(matches(isDisplayed()));
 
-        Spoon.screenshot(activity, "2");
+        new SpoonRule().screenshot(activity, "");
     }
 
     @Test
@@ -59,6 +59,6 @@ public class MainActivityTest {
 
         onView(withId(R.id.tv3)).check(matches(isDisplayed()));
 
-        Spoon.screenshot(activity, "3");
+        new SpoonRule().screenshot(activity, "");
     }
 }
